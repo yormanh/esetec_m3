@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EsferaEnemiga : MonoBehaviour
 {
-    public float velocidad;
+    [SerializeField] private float velocidad;
     private GameObject _player;
-    public float distanciaMinima;
+    [SerializeField] private float distanciaMinima;
 
     private void Start()
     {
@@ -26,7 +26,7 @@ public class EsferaEnemiga : MonoBehaviour
         //transform.position += new Vector3(0,0,1);
         //transform.position += direction.normalized * velocidad * Time.deltaTime;
 
-        if (Mathf.Abs(direction.z) > distanciaMinima)
+        if (direction.magnitude > distanciaMinima)
         {
             transform.position += direction.normalized * velocidad * Time.deltaTime;
         }
