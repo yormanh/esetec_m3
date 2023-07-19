@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    BaseWeapon _armaEquipada;
+    private BaseWeapon _armaEquipada;
     
     void Start()
     {
@@ -19,7 +19,14 @@ public class Player : MonoBehaviour
 
     private void OnAtacar()
     {
-        Debug.Log("OnAtacar");
+        //Debug.Log("OnAtacar");
         _armaEquipada.Atacar();
+    }
+
+    private void OnRecargar()
+    {
+        //Debug.Log("OnRecargar");
+        _armaEquipada.Recargar();
+        
     }
 }

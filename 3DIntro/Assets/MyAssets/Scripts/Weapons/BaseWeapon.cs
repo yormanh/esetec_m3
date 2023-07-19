@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class BaseWeapon : MonoBehaviour
 {
-    //lo max que podemos tener    
+    //lo max que podemos tener
+    [Header("Settings")]
     [SerializeField] protected int maxMunicion = 8; 
     [SerializeField] protected int maxMunicionInventario = 32;
+
+    [SerializeField] private bool balasInfinitas = false;
+
 
     //Lo que tenemos actualmente
     protected int currentMunicion;
@@ -14,6 +18,10 @@ public class BaseWeapon : MonoBehaviour
 
     protected int damage = 10;
     protected float tiempoEntreDisparos = 0.2f; //cadencia
+
+    [Header("Bala")]
+    [SerializeField] AudioClip recargarAudio;
+
 
     void Start()
     {
@@ -45,11 +53,23 @@ public class BaseWeapon : MonoBehaviour
         //    recargaMunicion = currentMunicionInventario;
         //}
 
+
+        Debug.Log("maxMunicion: " + maxMunicion);
+        Debug.Log("currentMunicion: " + currentMunicion);
+        Debug.Log("currentMunicionInventory: " + currentMunicionInventario);
+        Debug.Log("resta: " + (maxMunicion - currentMunicion));
+        //Debug.Log($"resta: {maxMunicion - currentMunicion}");
         recargaMunicion = Mathf.Min(maxMunicion
         - currentMunicion, currentMunicionInventario);
 
-        currentMunicion += recargaMunicion;
-        currentMunicionInventario -= recargaMunicion;
+        if (recargaMunicion > 0)
+        {
+            AudioSource.PlayClipAtPoint(recargarAudio, 
+                this.transform.position);
+            currentMunicion += recargaMunicion;
+            if (!balasInfinitas) //balasInfinitas == false
+                currentMunicionInventario -= recargaMunicion;
+        }
     }
 
 }
