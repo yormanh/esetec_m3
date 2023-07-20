@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : DamageableCharacter
 {
     [SerializeField] GameObject explosionPrefab;
     float tiempoVidaExplosion = 3.0f;
 
-    public void HacerDanyo()
+    protected override void Morir()
     {
+        base.Morir();
+
         Destroy(this.gameObject);
         GameObject newExplosion = Instantiate(explosionPrefab, 
             this.transform.position, Quaternion.identity);

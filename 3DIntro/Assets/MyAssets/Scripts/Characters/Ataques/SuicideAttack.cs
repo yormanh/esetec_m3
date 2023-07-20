@@ -6,7 +6,7 @@ public class SuicideAttack : MonoBehaviour
 {
     [SerializeField] ParticleSystem _explosionPrefab;
     [SerializeField] float distanciaAtaque = 2f;
-    [SerializeField] float danyo = 10f;
+    [SerializeField] int danyo = 10;
     Transform _player;
  
     void Start()
@@ -22,11 +22,16 @@ public class SuicideAttack : MonoBehaviour
 
         if (distancia < distanciaAtaque)
         {
-            //TODO daño al jugador
+            //daño al jugador
+            _player.GetComponent<Player>().HacerDanyo(danyo);
 
             ParticleSystem newExplosion = Instantiate(
                 _explosionPrefab, this.transform.position, 
                 Quaternion.identity);
+
+            //Destroy(newExplosion.gameObject, newExplosion.main.duration);
+            Destroy(newExplosion.gameObject, 1.0f);
+            Destroy(this.gameObject);
         }
     }
 }

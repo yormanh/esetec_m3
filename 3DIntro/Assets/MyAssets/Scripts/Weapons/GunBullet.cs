@@ -5,9 +5,9 @@ using UnityEngine;
 public class GunBullet : MonoBehaviour
 {
     [SerializeField] float tiempoVida = 3.0f;
-    int damage;
+    [SerializeField] int damage = 100;
 
-    //Prpiedades
+    //Propiedades
     public int GetDamage()
     {
         return damage;
@@ -28,7 +28,7 @@ public class GunBullet : MonoBehaviour
         if (other.CompareTag("Enemy")) //other.name == "Enemy"
         {
             //Destroy(other.gameObject);
-            other.GetComponent<Enemy>().HacerDanyo();
+            other.GetComponent<Enemy>().HacerDanyo(damage);
         }
 
         Destroy(this.gameObject);
