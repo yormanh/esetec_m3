@@ -23,6 +23,21 @@ public class BaseWeapon : MonoBehaviour
     [SerializeField] AudioClip recargarAudio;
 
 
+    public int GetCurrentMunicion()
+    {
+        return currentMunicion;
+    }
+
+    public int GetCurrentMunicionInventario()
+    {
+        return currentMunicionInventario;
+    }
+
+    public bool GetBalasInfinitas()
+    {
+        return balasInfinitas;
+    }
+
     void Start()
     {
         //inicializar los valores actuales
@@ -37,6 +52,16 @@ public class BaseWeapon : MonoBehaviour
     }
 
     public virtual void Atacar()
+    {
+
+    }
+
+    public virtual void PressTrigger()
+    {
+
+    }
+
+    public virtual void ReleaseTrigger()
     {
 
     }

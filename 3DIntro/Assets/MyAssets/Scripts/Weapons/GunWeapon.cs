@@ -16,15 +16,23 @@ public class GunWeapon : BaseWeapon
     [SerializeField] AudioClip sinMunicionAudio;
 
 
-    public override void Atacar()
+    public override void PressTrigger()
     {
-        if (Time.time > tiempoSiguenteDisparo && 
-            currentMunicion > 0)
+        if (Time.time > tiempoSiguenteDisparo)
+        {
+            DispararBala();
+        }
+            
+    }
+
+    protected void DispararBala()
+    {
+        if (currentMunicion > 0)
         {
             AudioSource.PlayClipAtPoint(disparoAudio,
                 this.transform.position);
 
-            GameObject nuevaBala = Instantiate(balaPrefab, 
+            GameObject nuevaBala = Instantiate(balaPrefab,
                 puntoDisparo.position, puntoDisparo.rotation);
 
             nuevaBala.GetComponent<Rigidbody>().
@@ -34,11 +42,13 @@ public class GunWeapon : BaseWeapon
             currentMunicion--;
             tiempoSiguenteDisparo = Time.time + tiempoEntreDisparos;
         }
-        else if (currentMunicion <= 0) {
-            Debug.Log(this.name + " No tiene munición");
+        else 
+        {
+            //Debug.Log(this.name + " No tiene munición");
             AudioSource.PlayClipAtPoint(sinMunicionAudio,
                 this.transform.position);
         }
+
     }
 
 }

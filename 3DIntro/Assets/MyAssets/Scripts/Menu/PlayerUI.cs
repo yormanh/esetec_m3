@@ -21,10 +21,24 @@ public class PlayerUI : MonoBehaviour
     
     void Update()
     {
+        UpdateBarraVida();
+        UpdateMunicion();
+    }
+    private void UpdateBarraVida()
+    {
         float vidaActual = _player.GetVidaActual();
         float maxVida = _player.GetMaxVida();
-
         barraVidaImage.fillAmount = vidaActual / maxVida;
-
+    }
+    private void UpdateMunicion()
+    {
+        bool bBalasInfinitas = _player.GetArmaEquipada().GetBalasInfinitas();
+        int currentMunicion = _player.GetArmaEquipada().GetCurrentMunicion();
+        int currentMunicionInventario = _player.GetArmaEquipada().GetCurrentMunicionInventario();
+        
+        if(!bBalasInfinitas)
+            municionText.text = currentMunicion + " / " + currentMunicionInventario;
+        else
+            municionText.text = currentMunicion + " / " + "INFINITO";
     }
 }
