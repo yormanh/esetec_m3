@@ -14,6 +14,8 @@ public class Player : DamageableCharacter
 
     BaseWeapon[] _allWeapons; //todas las armas que se tiene
 
+    Keyboard _keyboard;
+
 
     private void Awake()
     {
@@ -45,6 +47,7 @@ public class Player : DamageableCharacter
         triggerPress.performed += OnTriggerPress;
         triggerPress.canceled += OnTriggerPress;
 
+        _keyboard = Keyboard.current;
     }
 
     public BaseWeapon GetArmaEquipada()
@@ -58,7 +61,69 @@ public class Player : DamageableCharacter
 
     void Update()
     {
-        
+        if (isMuerto)
+            Morir();
+
+        CambiarArma();
+    }
+
+    void CambiarArma()
+    {
+        //foreach(BaseWeapon baseWeapon in _allWeapons)
+        for (int i = 0; i < _allWeapons.Length; i++)
+        {
+            //_allWeapons[i]
+            int tecla = i + 1;
+
+            switch(tecla)
+            {
+                case 1:
+                    if (_keyboard.digit1Key.wasPressedThisFrame)
+                        ActivarArma(i);
+                    break;
+                case 2:
+                    if (_keyboard.digit2Key.wasPressedThisFrame)
+                        ActivarArma(i);
+                    break;
+                case 3:
+                    if (_keyboard.digit3Key.wasPressedThisFrame)
+                        ActivarArma(i);
+                    break;
+                case 4:
+                    if (_keyboard.digit4Key.wasPressedThisFrame)
+                        ActivarArma(i);
+                    break;
+                case 5:
+                    if (_keyboard.digit5Key.wasPressedThisFrame)
+                        ActivarArma(i);
+                    break;
+                case 6:
+                    if (_keyboard.digit6Key.wasPressedThisFrame)
+                        ActivarArma(i);
+                    break;
+                case 7:
+                    if (_keyboard.digit7Key.wasPressedThisFrame)
+                        ActivarArma(i);
+                    break;
+
+                case 8:
+                    if (_keyboard.digit8Key.wasPressedThisFrame)
+                        ActivarArma(i);
+                    break;
+                case 9:
+                    if (_keyboard.digit9Key.wasPressedThisFrame)
+                        ActivarArma(i);
+                    break;
+
+            }
+        }
+    }
+
+    void ActivarArma(int i)
+    {
+        _armaEquipada.gameObject.SetActive(false);
+        _armaEquipada = _allWeapons[i];
+        _armaEquipada.gameObject.SetActive(true);
     }
 
     private void OnTriggerPress()

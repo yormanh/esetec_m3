@@ -19,6 +19,14 @@ public class DamageableCharacter : MonoBehaviour
         return vidaActual;
     }
 
+    public void SetVida(int value)
+    {
+        vidaActual += value;
+        vidaActual = Mathf.Clamp(vidaActual + value, 0, maxVida);
+
+
+    }
+
     protected virtual void Start()
     {
         vidaActual = maxVida;
