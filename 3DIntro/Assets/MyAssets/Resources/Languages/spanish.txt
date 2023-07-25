@@ -1,0 +1,3 @@
+Jugar@Jugar
+Creditos@Créditos
+Salir@Salir

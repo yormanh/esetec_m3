@@ -22,6 +22,17 @@ public class BaseWeapon : MonoBehaviour
     [Header("Bala")]
     [SerializeField] AudioClip recargarAudio;
 
+    bool hasWeapon; //tenemos el arma
+
+    public bool GetHasWeapon()
+    { 
+        return hasWeapon;
+    }
+
+    public void SetHasWeapon(bool value)
+    {
+        hasWeapon = value;
+    }
 
     public int GetCurrentMunicion()
     {
@@ -45,6 +56,10 @@ public class BaseWeapon : MonoBehaviour
         currentMunicionInventario = maxMunicionInventario;
     }
 
+    public void AddCurrentMunicionInventario(int value)
+    {
+        currentMunicionInventario += value;
+    }
     
     void Update()
     {

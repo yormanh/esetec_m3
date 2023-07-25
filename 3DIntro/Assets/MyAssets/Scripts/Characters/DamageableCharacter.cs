@@ -21,10 +21,8 @@ public class DamageableCharacter : MonoBehaviour
 
     public void SetVida(int value)
     {
-        vidaActual += value;
+        //vidaActual += value;
         vidaActual = Mathf.Clamp(vidaActual + value, 0, maxVida);
-
-
     }
 
     protected virtual void Start()
@@ -47,13 +45,13 @@ public class DamageableCharacter : MonoBehaviour
         isMuerto = true;
     }
 
-    private void Curar(int cura)
-    {
-        if (!isMuerto)  //isMuerto == false
-        {
-            vidaActual += cura;
-            vidaActual = Mathf.Clamp(vidaActual, 0, maxVida);
-        }
-    }
+    //private void Curar(int cura)
+    //{
+    //    if (!isMuerto)  //isMuerto == false
+    //    {
+    //        vidaActual += cura;
+    //        vidaActual = Mathf.Clamp(vidaActual, 0, maxVida);
+    //    }
+    //}
 
 }

@@ -31,6 +31,7 @@ public class Player : DamageableCharacter
             baseWeapon.gameObject.SetActive(false);
         }
         _armaEquipada.gameObject.SetActive(true);
+        _armaEquipada.SetHasWeapon(true);
     }
 
     protected override void Start()
@@ -78,40 +79,49 @@ public class Player : DamageableCharacter
             switch(tecla)
             {
                 case 1:
-                    if (_keyboard.digit1Key.wasPressedThisFrame)
+                    if (_keyboard.digit1Key.wasPressedThisFrame
+                        && _allWeapons[i].GetHasWeapon())
                         ActivarArma(i);
                     break;
                 case 2:
-                    if (_keyboard.digit2Key.wasPressedThisFrame)
+                    if (_keyboard.digit2Key.wasPressedThisFrame
+                        && _allWeapons[i].GetHasWeapon())
                         ActivarArma(i);
                     break;
                 case 3:
-                    if (_keyboard.digit3Key.wasPressedThisFrame)
+                    if (_keyboard.digit3Key.wasPressedThisFrame
+                        && _allWeapons[i].GetHasWeapon())
                         ActivarArma(i);
                     break;
                 case 4:
-                    if (_keyboard.digit4Key.wasPressedThisFrame)
+                    if (_keyboard.digit4Key.wasPressedThisFrame
+                        && _allWeapons[i].GetHasWeapon())
                         ActivarArma(i);
                     break;
                 case 5:
-                    if (_keyboard.digit5Key.wasPressedThisFrame)
+                    if (_keyboard.digit5Key.wasPressedThisFrame
+                        && _allWeapons[i].GetHasWeapon())
                         ActivarArma(i);
                     break;
                 case 6:
-                    if (_keyboard.digit6Key.wasPressedThisFrame)
+                    if (_keyboard.digit6Key.wasPressedThisFrame
+                        && _allWeapons[i].GetHasWeapon())
                         ActivarArma(i);
                     break;
                 case 7:
-                    if (_keyboard.digit7Key.wasPressedThisFrame)
+                    if (_keyboard.digit7Key.wasPressedThisFrame
+                        && _allWeapons[i].GetHasWeapon())
                         ActivarArma(i);
                     break;
 
                 case 8:
-                    if (_keyboard.digit8Key.wasPressedThisFrame)
+                    if (_keyboard.digit8Key.wasPressedThisFrame
+                        && _allWeapons[i].GetHasWeapon())
                         ActivarArma(i);
                     break;
                 case 9:
-                    if (_keyboard.digit9Key.wasPressedThisFrame)
+                    if (_keyboard.digit9Key.wasPressedThisFrame
+                        && _allWeapons[i].GetHasWeapon())
                         ActivarArma(i);
                     break;
 
@@ -172,6 +182,14 @@ public class Player : DamageableCharacter
     }
 
 }
+
+
+
+
+
+
+
+
 
 
 
